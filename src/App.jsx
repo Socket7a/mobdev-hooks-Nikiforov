@@ -7,18 +7,25 @@ import PagePeople from './pages/People/People'
 import PageSettings from './pages/Settings/Settings'
 
 function App() {
-    const [page, setPage] = useState()
-    return (
-        <div className="app-shell" id="appShell">
-            <Sidebar page ={page} setPage = {setPage} />
-            <div className="app-main">
-                <Header />
+    const [page, setPage] = useState('board')
+    const [collapsed, setCollapsed] = useState(false)
 
+    return (
+        <div className={`app-shell ${collapsed ? 'sidebar-collapsed' : ""}`} id="appShell">
+            <Sidebar
+                page={page}
+                setPage={setPage} />
+            
+            <div className="app-main">
+                <Header
+                    setCollapsed={setCollapsed}
+                />
                 <main className="page-area">
-                    {page === "board" && <PageBoard />}
-                    {page === "people" && <PagePeople />}
-                    {page === "activity" && <PageActivity />}
-                    {page === "settings" && <PageSettings />}
+                {page === "board" &&<PageBoard />}
+                {page === "people" &&<PagePeople />}
+                {page === "activity" &&<PageActivity />}
+                {page === "setttings" &&<PageSettings />}
+
                 </main>
             </div>
         </div>

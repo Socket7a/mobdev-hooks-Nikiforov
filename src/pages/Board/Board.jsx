@@ -1,4 +1,24 @@
+import taskrow from "../../components/TaskRow";
+import { nanoid } from "nanoid"
+
 const PageBoard = () => {
+    const [taskField, setTaskField] = useState('')
+    const [tasks, setTasks] = useState([])
+    
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      const newTask = {
+        id: nanoid(),
+        title: taskField.trim(),
+         storyPoints: 0,
+         done: false
+         
+        }
+      setTasks([...tasks, newTasks])
+
+      setTaskField("")
+
+    }
     return (
         <section className="page active" id="page-board">
             <div className="page-header">
@@ -47,6 +67,9 @@ const PageBoard = () => {
                     <div className="add-task-row">
                         <input
                             className="input grow"
+                            name="task"
+                            value={taskField}
+                            onChange={(e) => setTaskField(e.target.value)}
                             placeholder="Add a task and press Enter..."
                         />
                         <button className="btn">Add</button>

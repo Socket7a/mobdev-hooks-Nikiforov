@@ -1,12 +1,13 @@
 import "./Header.css"
 
-const Header = () => {
+const Header = ({ collapsed, setCollapsed, setPage}) => {
     return (
         <header className="topbar">
             <button
                 className="icon-btn"
                 id="sidebarToggle"
                 title="Collapse sidebar"
+                onClick={ () => setCollapsed(!collapsed)}
             >
                 <svg
                     viewBox="0 0 24 24"
